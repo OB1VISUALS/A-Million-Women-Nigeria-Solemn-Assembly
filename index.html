@@ -139,39 +139,41 @@
                     <button type="submit" class="w-full bg-[#555] hover:bg-black text-white font-semibold py-4 rounded-sm transition-colors duration-200 mt-4 text-base tracking-wide shadow-sm">
                         Send
                     </button>
-
+<!-- Add this somewhere below the form so successDiv is not null -->
+<div id="form-success" class="hidden text-green-600 mt-4">
+    Thank you! Your submission has been received.
                 </form>
             </div>
         </div>
     </div>
 
-    
-<script>
-  const form = document.getElementById('register-form');
-  const successDiv = document.getElementById('form-success');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault(); // stop page reload
-    const formData = new FormData(form);
-
-    try {
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (response.ok) {
-        form.reset();               // clear fields
-        successDiv.classList.remove('hidden');
-        // optionally hide the form or show a big thank you
-      } else {
-        alert('Oops! Something went wrong. Please try again.');
-      }
-    } catch (error) {
-      alert('Submission failed. Check your internet.');
-    }
-  });
-</script>
+    <script>
+        const form = document.getElementById('register-form');
+        const successDiv = document.getElementById('form-success');
+      
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+      
+          const formData = new FormData(form);
+      
+          try {
+            const response = await fetch(form.action, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: new URLSearchParams(formData).toString(), // URL-encoded
+            });
+      
+            if (response.ok) {
+              form.reset();
+              if (successDiv) successDiv.classList.remove('hidden');
+            } else {
+              alert('Oops! Something went wrong. Please try again.');
+            }
+          } catch (error) {
+            alert('Submission failed. Check your internet.');
+          }
+        });
+      </script>
    
     <!-- ===== PROFESSIONAL FOOTER ===== -->
     <div class="relative bg-black w-full pt-20 pb-8 mt-12">

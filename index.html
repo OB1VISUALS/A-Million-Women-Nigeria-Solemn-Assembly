@@ -37,6 +37,53 @@
         body::-webkit-scrollbar-thumb {
             background: #888;
         }
+
+        /* ===== ADDITIONAL MINIMAL ANIMATIONS ===== */
+        /* Fade-in on load for main sections */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero banner + main content + footer fade in */
+        .relative.w-full.h-\[400px\],
+        .max-w-7xl.mx-auto,
+        .relative.bg-black {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Logo hover effect – subtle scale */
+        .pointer-events-auto img {
+            transition: transform 0.3s ease;
+        }
+        .pointer-events-auto:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Form inputs glow on focus */
+        input:focus {
+            box-shadow: 0 0 0 3px rgba(0,0,0,0.1), 0 0 0 1px black;
+            transition: box-shadow 0.2s ease;
+        }
+
+        /* Submit button hover animation */
+        button[type="submit"] {
+            transition: all 0.2s ease;
+        }
+        button[type="submit"]:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Footer tagline subtle pulse */
+        @keyframes softPulse {
+            0% { text-shadow: 0 0 0px rgba(255,255,255,0.3); }
+            50% { text-shadow: 0 0 8px rgba(255,255,255,0.6); }
+            100% { text-shadow: 0 0 0px rgba(255,255,255,0.3); }
+        }
+        .flex.flex-col.items-center.text-center.space-y-8.mb-12 h2 {
+            animation: softPulse 4s infinite ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-white text-black font-sans antialiased overflow-x-hidden">
@@ -50,7 +97,7 @@
         <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
             <a href="#" class="pointer-events-auto" aria-label="Homepage">
                 <!-- Increased logo size for better visibility -->
-                <img src="/assets/black_1-removebg-preview.png" alt="A Million Women Nigeria" class="h-auto max-w-[50px] md:max-w-[150px] lg:max-w-[250px]">
+                <img src="https://wrhyzuqchigrvvouodho.supabase.co/storage/v1/object/public/Image/Logo.png" alt="A Million Women Nigeria" class="h-auto max-w-[50px] md:max-w-[150px] lg:max-w-[250px]">
             </a>
         </div>
 

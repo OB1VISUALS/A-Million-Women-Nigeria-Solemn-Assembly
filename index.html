@@ -75,15 +75,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
-        /* Footer tagline subtle pulse */
-        @keyframes softPulse {
-            0% { text-shadow: 0 0 0px rgba(255,255,255,0.3); }
-            50% { text-shadow: 0 0 8px rgba(255,255,255,0.6); }
-            100% { text-shadow: 0 0 0px rgba(255,255,255,0.3); }
-        }
-        .flex.flex-col.items-center.text-center.space-y-8.mb-12 h2 {
-            animation: softPulse 4s infinite ease-in-out;
-        }
+        /* (Pulse effect removed as requested) */
     </style>
 </head>
 <body class="bg-white text-black font-sans antialiased overflow-x-hidden">
@@ -93,22 +85,22 @@
         
         <img src="https://wrhyzuqchigrvvouodho.supabase.co/storage/v1/object/public/Image/theatre.jpeg" alt="National Theatre" class="absolute inset-0 w-full h-full object-cover object-center grayscale contrast-125">
         
-        <!-- Centered Logo on Hero (transparent background, linked) -->
+        <!-- Centered Logo on Hero – now much larger for mobile & desktop -->
         <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
             <a href="#" class="pointer-events-auto" aria-label="Homepage">
-                <!-- Increased logo size for better visibility -->
-                <img src="https://wrhyzuqchigrvvouodho.supabase.co/storage/v1/object/public/Image/Logo.png" alt="A Million Women Nigeria" class="h-auto max-w-[50px] md:max-w-[150px] lg:max-w-[250px]">
+                <!-- Increased logo size: 200px on mobile, 300px on medium, 400px on large -->
+                <img src="https://wrhyzuqchigrvvouodho.supabase.co/storage/v1/object/public/Image/inverted%20no%20bg.png" alt="A Million Women Nigeria" class="h-auto max-w-[200px] md:max-w-[300px] lg:max-w-[400px]">
             </a>
         </div>
 
         <!-- Torn Paper Edge Effect (Top) -->
-        <div class="absolute bottom-[-1px] left-0 w-full leading-[0]">
+        <!-- <div class="absolute bottom-[-1px] left-0 w-full leading-[0]">
             <svg class="relative block w-[calc(100%+1.3px)] h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path d="M0,0V46.29c47,24.5,94,30.34,141,18,47-12.33,94-39.66,141-51,47-11.33,94-1.33,141,16,47,17.33,94,42,141,49s94-6,141-26c47-20,94-46.66,141-54,47-7.33,94,1.67,141,14,47,12.33,94,28,141,29,47,1,47-30,47-30V0Z" class="fill-white"></path>
                 <path d="M0,120h1200V46.29c-47,24.5-94,30.34-141,18-47-12.33-94-39.66-141-51-47-11.33-94-1.33-141,16-47,17.33-94,42-141,49s-94-6-141-26c-47-20-94-46.66-141-54-47-7.33-94,1.67-141,14-47,12.33-94,28-141,29-47,1-47-30-47-30V120Z" class="fill-white" transform="scale(1, -1) translate(0, -120)"></path> 
                 <path d="M0,60 C50,70 100,40 150,55 C200,70 250,50 300,65 C350,80 400,45 450,60 C500,75 550,50 600,70 C650,90 700,55 750,75 C800,95 850,60 900,80 C950,100 1000,70 1050,85 C1100,100 1150,80 1200,90 L1200,120 L0,120 Z" fill="white"/>
             </svg>
-        </div>
+        </div> -->
     </div>
 
     <!-- Main Content Section -->
@@ -236,7 +228,7 @@
         <!-- Main footer content -->
         <div class="relative max-w-7xl mx-auto px-6 lg:px-12">
             
-            <!-- Inspirational Quote -->
+            <!-- Inspirational Quote (pulse animation removed) -->
             <div class="flex flex-col items-center text-center space-y-8 mb-12">
                 <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white leading-tight">
                     <span class="text-outline-white font-black block md:inline mr-3">Can The</span>

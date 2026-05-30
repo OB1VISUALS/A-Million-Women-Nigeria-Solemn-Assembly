@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>
+      Give · A Million Women Africa | Partner with Esthers & Mordecais
+    </title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/lucide.min.js"></script>
+
+    <style>
+      /* ---------- AFRICAN DESIGN SYSTEM · SACRED PALETTE ---------- */
+      :root {
+        --unry: #93a6d1;
+        --resilience: #eaa639;
+        --arise: #ec6547;
+        --courage: #f4afce;
+        --empower: #dedf55;
+        --black-deep: #0a0a0a;
+        --white-pure: #ffffff;
+        --off-white: #faf9f6;
+        --text-dark: #1e1b16;
+      }
+
+      body {
+        font-family: 'Courier Prime', monospace;
+        background-color: var(--white-pure);
+        color: var(--text-dark);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .font-bebas {
+        font-family: 'Bebas Neue', sans-serif;
+      }
+
+      /* KENTE BAR */
+      .kente-bar {
+        height: 0.35rem;
+        width: 100%;
+        background: repeating-linear-gradient(
+          to right,
+          var(--unry) 0,
+          var(--unry) 1.5rem,
+          var(--black-deep) 1.5rem,
+          var(--black-deep) 1.8rem,
+          var(--arise) 1.8rem,
+          var(--arise) 3.2rem,
+          var(--black-deep) 3.2rem,
+          var(--black-deep) 3.5rem,
+          var(--resilience) 3.5rem,
+          var(--resilience) 5rem,
+          var(--black-deep) 5rem,
+          var(--black-deep) 5.3rem,
+          var(--empower) 5.3rem,
+          var(--empower) 6.8rem,
+          var(--black-deep) 6.8rem,
+          var(--black-deep) 7.1rem,
+          var(--courage) 7.1rem,
+          var(--courage) 8.6rem,
+          var(--black-deep) 8.6rem,
+          var(--black-deep) 8.9rem
+        );
+      }
+
+      .adinkra-divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 3rem auto;
+        max-width: 37.5rem;
+      }
+      .adinkra-line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--resilience),
+          transparent
+        );
+      }
+
+      /* Scroll reveal */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(1.5rem);
+        transition: opacity 0.65s cubic-bezier(0.2, 0.9, 0.4, 1.1),
+          transform 0.65s ease;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* Donation button */
+      .donation-btn {
+        background: var(--arise);
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 0.875rem;
+        padding: 0.85rem 1.8rem;
+        border-radius: 0.5rem;
+        transition: transform 0.2s, background 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+      .donation-btn:hover {
+        background: #c53f2e;
+        transform: translateY(-3px);
+      }
+
+      /* ----- MOBILE MENU (fullscreen overlay with pure CSS hamburger) ----- */
+      .mobile-menu-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 10, 10, 0.96);
+        backdrop-filter: blur(12px);
+        z-index: 1098;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      .mobile-menu-overlay.open {
+        opacity: 1;
+        visibility: visible;
+      }
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1100;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        background: transparent;
+        pointer-events: none;
+      }
+      .mobile-menu.open {
+        pointer-events: auto;
+      }
+      .mobile-menu a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        padding: 0.75rem 1.5rem;
+        transition: color 0.2s, border-bottom 0.2s;
+        border-bottom: 2px solid transparent;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s;
+      }
+      .mobile-menu.open a {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .mobile-menu a:nth-child(1) {
+        transition-delay: 0.05s;
+      }
+      .mobile-menu a:nth-child(2) {
+        transition-delay: 0.1s;
+      }
+      .mobile-menu a:nth-child(3) {
+        transition-delay: 0.15s;
+      }
+      .mobile-menu a:nth-child(4) {
+        transition-delay: 0.2s;
+      }
+      .mobile-menu a:nth-child(5) {
+        transition-delay: 0.25s;
+      }
+      .mobile-menu a:hover,
+      .mobile-menu a:active {
+        color: var(--arise);
+        border-bottom-color: var(--arise);
+      }
+      .mobile-menu .active-link {
+        color: var(--arise);
+        border-bottom-color: var(--arise);
+      }
+
+      /* Pure CSS hamburger icon */
+      .hamburger-icon {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 26px;
+        height: 20px;
+        cursor: pointer;
+      }
+      .hamburger-icon span {
+        display: block;
+        height: 2.5px;
+        width: 100%;
+        background-color: white;
+        border-radius: 2px;
+        transition: all 0.2s ease;
+      }
+
+      /* Close button (X) */
+      .close-icon {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+        z-index: 1101;
+        opacity: 0;
+        transition: opacity 0.3s ease 0.1s;
+      }
+      .mobile-menu.open .close-icon {
+        opacity: 1;
+      }
+      .close-icon::before,
+      .close-icon::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 2.5px;
+        background-color: white;
+        border-radius: 2px;
+        transition: background 0.2s;
+      }
+      .close-icon::before {
+        transform: translateY(-50%) rotate(45deg);
+      }
+      .close-icon::after {
+        transform: translateY(-50%) rotate(-45deg);
+      }
+      .close-icon:hover::before,
+      .close-icon:hover::after {
+        background-color: var(--arise);
+      }
+
+      @media (max-width: 640px) {
+        .adinkra-divider {
+          margin: 2rem auto;
+        }
+        .mobile-menu a {
+          font-size: 1.1rem;
+          padding: 0.6rem 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="text-[1rem] md:text-[1.0625rem]">
+    <!-- MOBILE MENU OVERLAY & MENU -->
+    <div id="mobileOverlay" class="mobile-menu-overlay"></div>
+    <div id="mobileMenu" class="mobile-menu">
+      <div id="closeMenuBtn" class="close-icon"></div>
+      <a href="index.html">Home</a>
+      <a href="story.html">Story</a>
+      <a href="people.html">People</a>
+      <a href="get-involved.html">Get Involved</a>
+      <a href="donate.html" class="active-link">Donate</a>
+    </div>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="sticky top-0 z-[1000] bg-[#0a0a0a] w-full">
+      <div class="h-[3.75rem] flex items-center justify-between px-5 md:px-12">
+        <div class="flex items-center gap-2 text-white">
+          <span
+            class="font-bebas text-[1.3rem] sm:text-[1.75rem] tracking-[0.03em] leading-tight"
+            >A MILLION WOMEN AFRICA</span
+          >
+        </div>
+
+        <!-- Desktop navigation -->
+        <div
+          class="hidden lg:flex items-center gap-8 font-bold text-[0.8125rem] uppercase tracking-[0.1em] text-white"
+        >
+          <a href="index.html" class="hover:text-[#EC6547] transition-colors"
+            >Home</a
+          >
+          <a href="story.html" class="hover:text-[#EC6547] transition-colors"
+            >Story</a
+          >
+          <a href="people.html" class="hover:text-[#EC6547] transition-colors"
+            >People</a
+          >
+          <a
+            href="get-involved.html"
+            class="hover:text-[#EC6547] transition-colors"
+            >Get Involved</a
+          >
+          <a
+            href="donate.html"
+            class="text-[#EC6547] border-b-2 border-[#EC6547] pb-0.5"
+            >Donate</a
+          >
+        </div>
+
+        <!-- Hamburger button (mobile only) -->
+        <button
+          id="hamburgerBtn"
+          class="lg:hidden block focus:outline-none ml-auto"
+          aria-label="Menu"
+        >
+          <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
+    </nav>
+
+    <!-- torn edge decoration -->
+    <div
+      style="background: var(--black-deep); line-height: 0; margin-bottom: -1px"
+    >
+      <svg
+        viewBox="0 0 1440 32"
+        preserveAspectRatio="none"
+        style="width: 100%; height: 2rem; display: block"
+      >
+        <path
+          d="M0,0 L0,18 L30,8 L60,22 L90,10 L120,24 L155,6 L185,20 L215,8 L245,22 L275,12 L310,26 L340,4 L370,18 L400,8 L435,24 L465,10 L495,22 L525,6 L555,20 L590,10 L620,26 L650,8 L680,22 L715,12 L745,28 L775,6 L810,20 L840,10 L870,24 L900,8 L935,22 L965,12 L995,26 L1025,6 L1060,20 L1090,10 L1120,24 L1150,8 L1185,22 L1215,12 L1245,28 L1275,8 L1310,22 L1340,10 L1370,26 L1400,8 L1440,18 L1440,0 Z"
+          fill="#0a0a0a"
+        ></path>
+      </svg>
+    </div>
+
+    <main>
+      <!-- HERO + KENTE -->
+      <div class="kente-bar"></div>
+      <header class="text-center pt-[4rem] px-6 pb-12 fade-up">
+        <h1
+          class="font-bebas text-[clamp(3rem,8vw,5.5rem)] text-[#0a0a0a] tracking-tight leading-[0.9]"
+        >
+          GIVE TO THE MOVEMENT
+        </h1>
+        <div class="w-[3.75rem] h-[3px] bg-[#EC6547] mx-auto my-3"></div>
+        <p
+          class="font-bold uppercase text-[0.7rem] sm:text-[0.75rem] tracking-[0.2em] text-[#EAA639] mt-2"
+        >
+          PARTNER WITH ESTHERS & MORDECAIS ACROSS AFRICA
+        </p>
+        <p
+          class="max-w-2xl mx-auto text-[0.9rem] sm:text-[0.95rem] text-[#444] mt-4 italic"
+        >
+          Your generosity fuels solemn assemblies, equips prayer coordinators,
+          and transforms nations through repentance and revival.
+        </p>
+      </header>
+
+      <!-- DONATION OPTIONS (3 CARDS) -->
+      <section class="max-w-[75rem] mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- CARD 1: SELAR (Online Giving) -->
+          <div
+            class="bg-white border border-[#e0e0e0] border-t-[4px] border-t-[#EAA639] p-5 sm:p-6 rounded-sm shadow-sm fade-up flex flex-col h-full"
+          >
+            <div class="flex justify-center mb-4">
+              <div
+                class="w-14 h-14 rounded-full bg-[#0a0a0a]/5 flex items-center justify-center"
+              >
+                <i
+                  data-lucide="credit-card"
+                  stroke-width="1.5"
+                  class="w-7 h-7 text-[#EC6547]"
+                ></i>
+              </div>
+            </div>
+            <h3
+              class="font-bebas text-[1.6rem] sm:text-[1.8rem] tracking-[0.03em] text-center text-[#0a0a0a] mb-1"
+            >
+              GIVE ONLINE
+            </h3>
+            <p
+              class="text-center uppercase text-[0.65rem] font-bold tracking-[0.12em] text-[#EC6547] mb-3"
+            >
+              SECURE · SELAR PAYMENTS
+            </p>
+            <p
+              class="text-[0.85rem] text-[#444] text-center mb-6 leading-relaxed"
+            >
+              Donate via credit/debit cards, PayPal, or mobile money. Fast,
+              encrypted, and globally trusted.
+            </p>
+            <div class="mt-auto text-center">
+              <a
+                href="https://selar.com/showlove/amillionwomenafrica"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="donation-btn w-full justify-center text-[0.8rem] py-3 px-5"
+                ><i data-lucide="heart" class="w-4 h-4"></i> Donate via Selar
+                →</a
+              >
+              <p class="text-[0.65rem] text-[#888] mt-3">
+                All currencies accepted
+              </p>
+            </div>
+          </div>
+
+          <!-- CARD 2: BANK TRANSFER -->
+          <div
+            class="bg-white border border-[#e0e0e0] border-t-[4px] border-t-[#EAA639] p-5 sm:p-6 rounded-sm shadow-sm fade-up flex flex-col h-full"
+          >
+            <div class="flex justify-center mb-4">
+              <div
+                class="w-14 h-14 rounded-full bg-[#0a0a0a]/5 flex items-center justify-center"
+              >
+                <i
+                  data-lucide="building"
+                  stroke-width="1.5"
+                  class="w-7 h-7 text-[#EC6547]"
+                ></i>
+              </div>
+            </div>
+            <h3
+              class="font-bebas text-[1.6rem] sm:text-[1.8rem] tracking-[0.03em] text-center text-[#0a0a0a] mb-1"
+            >
+              BANK TRANSFER
+            </h3>
+            <p
+              class="text-center uppercase text-[0.65rem] font-bold tracking-[0.12em] text-[#EC6547] mb-3"
+            >
+              DIRECT DEPOSIT / WIRE
+            </p>
+            <div class="space-y-3 text-[0.85rem] text-[#444] mb-6">
+              <div class="bg-[#fefcf6] p-3 rounded border-l-2 border-[#EAA639]">
+                <p class="font-bold text-[#0a0a0a] mb-1">Beneficiary:</p>
+                <p class="text-sm">A Million Women Africa (AMWA)</p>
+              </div>
+              <div class="bg-[#fefcf6] p-3 rounded border-l-2 border-[#EAA639]">
+                <p class="font-bold text-[#0a0a0a] mb-1">Bank details:</p>
+                <p class="text-sm italic text-[#666]">
+                  ESTHER PRAYER INITIATIVE.<br />1309176234<br />PROVIDUS BANK
+                </p>
+              </div>
+              <div class="mt-2 text-center text-xs text-[#888]">
+                <i data-lucide="mail" class="inline w-3.5 h-3.5 mr-1"></i> For
+                urgent inquiries:
+                <span class="font-mono">finance@amillionwomenafrica.org</span>
+              </div>
+            </div>
+            <div class="mt-auto text-center">
+              <div
+                class="border-t border-dashed border-gray-200 pt-4 text-[0.7rem] text-[#888]"
+              >
+                <i data-lucide="clock" class="inline w-3.5 h-3.5 mr-1"></i>
+                Official bank details coming Q2 2026
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: ZELLE (USA) -->
+          <div
+            class="bg-white border border-[#e0e0e0] border-t-[4px] border-t-[#EAA639] p-5 sm:p-6 rounded-sm shadow-sm fade-up flex flex-col h-full"
+          >
+            <div class="flex justify-center mb-4">
+              <div
+                class="w-14 h-14 rounded-full bg-[#0a0a0a]/5 flex items-center justify-center"
+              >
+                <i
+                  data-lucide="dollar-sign"
+                  stroke-width="1.5"
+                  class="w-7 h-7 text-[#EC6547]"
+                ></i>
+              </div>
+            </div>
+            <h3
+              class="font-bebas text-[1.6rem] sm:text-[1.8rem] tracking-[0.03em] text-center text-[#0a0a0a] mb-1"
+            >
+              ZELLE (USA)
+            </h3>
+            <p
+              class="text-center uppercase text-[0.65rem] font-bold tracking-[0.12em] text-[#EC6547] mb-3"
+            >
+              FOR US SUPPORTERS
+            </p>
+            <div class="flex-grow">
+              <div class="bg-[#f0f7ff] p-4 rounded-lg text-center my-2">
+                <p class="font-medium text-[#0a0a0a]">
+                  🇺🇸 Zelle donations will be available soon
+                </p>
+                <p class="text-sm text-[#555] mt-2">
+                  We are preparing a seamless way for USA partners to give
+                  directly via Zelle. Subscribe to our newsletter to receive
+                  instant updates.
+                </p>
+              </div>
+              <div class="text-center mt-4">
+                <div
+                  class="inline-flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-full text-xs text-gray-700"
+                >
+                  <i data-lucide="bell" class="w-3.5 h-3.5"></i
+                  ><span>Launching before July 2026</span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 text-center pt-2">
+              <p class="text-[0.65rem] text-[#999]">
+                For urgent US giving, please use the Selar option (international
+                cards accepted).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ADINKRA DIVIDER -->
+      <div class="adinkra-divider px-6 fade-up">
+        <span class="adinkra-line"></span
+        ><svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <ellipse
+            cx="14"
+            cy="8"
+            rx="4"
+            ry="6"
+            stroke="#EAA639"
+            stroke-width="1.5"
+            fill="none"
+          ></ellipse>
+          <ellipse
+            cx="14"
+            cy="20"
+            rx="4"
+            ry="6"
+            stroke="#EAA639"
+            stroke-width="1.5"
+            fill="none"
+          ></ellipse>
+          <ellipse
+            cx="8"
+            cy="14"
+            rx="6"
+            ry="4"
+            stroke="#EAA639"
+            stroke-width="1.5"
+            fill="none"
+          ></ellipse>
+          <ellipse
+            cx="20"
+            cy="14"
+            rx="6"
+            ry="4"
+            stroke="#EAA639"
+            stroke-width="1.5"
+            fill="none"
+          ></ellipse>
+          <circle cx="14" cy="14" r="2" fill="#EAA639"></circle></svg
+        ><span class="adinkra-line"></span>
+      </div>
+
+      <!-- IMPACT & STEWARDSHIP -->
+      <section class="max-w-[65rem] mx-auto px-6 pb-10 text-center fade-up">
+        <h2
+          class="font-bebas text-[1.8rem] sm:text-[2.5rem] text-[#0a0a0a] tracking-tight mb-4"
+        >
+          WHERE YOUR GIFT GOES
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
+          <div class="p-4 bg-[#fafaf8] border-b-2 border-[#EAA639]">
+            <i
+              data-lucide="users"
+              class="w-7 h-7 text-[#EC6547] mx-auto mb-2"
+            ></i>
+            <h3 class="font-bold text-sm uppercase">Solemn Assemblies</h3>
+            <p class="text-xs text-[#555]">
+              Funding national gatherings in Nigeria, South Africa & beyond.
+            </p>
+          </div>
+          <div class="p-4 bg-[#fafaf8] border-b-2 border-[#EAA639]">
+            <i
+              data-lucide="radio"
+              class="w-7 h-7 text-[#EC6547] mx-auto mb-2"
+            ></i>
+            <h3 class="font-bold text-sm uppercase">Prayer Networks</h3>
+            <p class="text-xs text-[#555]">
+              Equipping regional prayer coordinators across Africa.
+            </p>
+          </div>
+          <div class="p-4 bg-[#fafaf8] border-b-2 border-[#EAA639]">
+            <i
+              data-lucide="book-open"
+              class="w-7 h-7 text-[#EC6547] mx-auto mb-2"
+            ></i>
+            <h3 class="font-bold text-sm uppercase">Discipleship Resources</h3>
+            <p class="text-xs text-[#555]">
+              Producing revival materials and Esther devotionals.
+            </p>
+          </div>
+          <div class="p-4 bg-[#fafaf8] border-b-2 border-[#EAA639]">
+            <i
+              data-lucide="hand-heart"
+              class="w-7 h-7 text-[#EC6547] mx-auto mb-2"
+            ></i>
+            <h3 class="font-bold text-sm uppercase">Outreach & Mercy</h3>
+            <p class="text-xs text-[#555]">
+              Community impact aligned with the heart of the nation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCRIPTURE BANNER -->
+      <section
+        class="bg-[#0a0a0a] w-full py-[3.5rem] sm:py-[4rem] px-6 text-center fade-up mt-6"
+      >
+        <div class="max-w-[48rem] mx-auto">
+          <i
+            data-lucide="feather"
+            class="w-7 h-7 sm:w-8 sm:h-8 text-[#EAA639] mx-auto mb-3"
+          ></i>
+          <h2
+            class="font-bebas text-[clamp(1.6rem,6vw,3.5rem)] text-white tracking-tight leading-[1.1] mb-4"
+          >
+            “BRING THE FULL TITHE INTO THE STOREHOUSE...”
+          </h2>
+          <p
+            class="text-[0.85rem] sm:text-[0.9375rem] text-white/80 mb-8 italic"
+          >
+            — Malachi 3:10 — Partner with heaven to see a million women arise in
+            prayer and revival.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row items-center justify-center gap-5"
+          >
+            <a
+              href="https://selar.com/showlove/amillionwomenafrica"
+              target="_blank"
+              class="inline-block bg-[#EC6547] text-white font-bold uppercase tracking-[0.12em] text-[0.85rem] sm:text-[0.9375rem] py-3 px-6 sm:px-8 transition-all hover:bg-[#c53f2e] hover:-translate-y-1 rounded-sm shadow-md"
+              >DONATE NOW →</a
+            ><a
+              href="get-involved.html"
+              class="inline-block text-white text-[0.75rem] sm:text-[0.8125rem] hover:text-[#DEDF55] transition-colors underline decoration-white/30 underline-offset-4"
+              >BECOME A PRAYER PARTNER →</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- SHARED FOOTER -->
+    <footer class="bg-[#0a0a0a] text-white w-full">
+      <div
+        class="text-center py-8 px-6 font-bebas text-[clamp(1.5rem,4vw,3rem)] tracking-[0.04em] border-b border-white/10"
+      >
+        JOIN THE MOVEMENT | CHANGE THE NATIONS
+      </div>
+      <div
+        class="flex flex-col md:flex-row items-center justify-between py-7 px-6 md:px-12 gap-8 flex-wrap"
+      >
+        <div
+          class="font-bebas text-[1.5rem] sm:text-[2rem] tracking-[0.04em] text-[#EAA639]"
+        >
+          A MILLION WOMEN AFRICA
+        </div>
+        <div class="flex gap-5">
+          <a
+            href="https://www.instagram.com/amillionwomenafrica"
+            target="_blank"
+            class="text-white hover:text-[#EC6547] transition"
+            ><i data-lucide="instagram" class="w-5 h-5"></i></a
+          ><a
+            href="https://www.youtube.com/@AMillionWomenAfrica"
+            target="_blank"
+            class="text-white hover:text-[#EC6547] transition"
+            ><i data-lucide="youtube" class="w-5 h-5"></i
+          ></a>
+        </div>
+        <div
+          class="text-[0.65rem] tracking-[0.08em] text-white/60 order-3 md:order-none"
+        >
+          © 2026 Copyright AMWA
+        </div>
+        <nav class="grid grid-cols-2 gap-x-6 gap-y-2 md:flex md:gap-x-6">
+          <a
+            href="index.html"
+            class="text-[0.65rem] font-bold tracking-[0.1em] uppercase text-white/75 hover:text-white"
+            >HOME</a
+          ><a
+            href="story.html"
+            class="text-[0.65rem] font-bold tracking-[0.1em] uppercase text-white/75 hover:text-white"
+            >OUR STORY</a
+          ><a
+            href="get-involved.html"
+            class="text-[0.65rem] font-bold tracking-[0.1em] uppercase bg-[#EC6547] text-white py-[3px] px-2 rounded-sm hover:opacity-90"
+            >GET INVOLVED</a
+          ><a
+            href="https://selar.com/showlove/amillionwomenafrica"
+            target="_blank"
+            class="text-[0.65rem] font-bold tracking-[0.1em] uppercase bg-[#EC6547] text-white py-[3px] px-2 rounded-sm hover:opacity-90"
+            >DONATE</a
+          >
+        </nav>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+
+        // Mobile menu toggle
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+
+        function openMenu() {
+          mobileMenu.classList.add('open');
+          mobileOverlay.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+          mobileMenu.classList.remove('open');
+          mobileOverlay.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+
+        if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMenu);
+        if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+        if (mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
+
+        const mobileLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
+        mobileLinks.forEach((link) =>
+          link.addEventListener('click', closeMenu)
+        );
+        document.addEventListener('keydown', (e) => {
+          if (
+            e.key === 'Escape' &&
+            mobileMenu &&
+            mobileMenu.classList.contains('open')
+          )
+            closeMenu();
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -20px 0px' }
+        );
+        document
+          .querySelectorAll('.fade-up')
+          .forEach((el) => observer.observe(el));
+      });
+    </script>
+    <style>
+      .fade-up.visible {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+      body {
+        overflow-x: hidden;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+  </body>
+</html>
